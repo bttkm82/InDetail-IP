@@ -1,0 +1,49 @@
+## args
+root_dir: ./results
+exp_folder: "%>> %(model)s_%(task)s"
+model: sd15new
+pipe: diffusers.StableDiffusionControlNetPipeline
+ip_model: src.InDetailIP.InDetailIP
+inversion: src.ddim_inversion_sd.Inversion
+is_half: True
+cond: depth
+
+cond_path: "%>> inputs/penguin_%(cond)s.png"
+img_path: inputs/cat.png
+inf_text:
+  - a penguin
+inv_text: ""
+
+#### from km
+seed: 82
+cache_dir: /home/nas2_userG/kyungminjo/.cache
+task: stguide  #imgvar, stguide, crossprompt
+text_type: null
+use_prefix: True
+
+## cfgs
+inv_step: 50
+ddim_step: 50
+cfg: 5
+num_samples: 4
+#lat_smp: rnd  #shf, rnd
+use_adain: True
+#init_lat: rnd
+
+unet:
+  unet_forward_fn: src.unet.unet_forward
+  guidance_scale: ">>> self['cfg']"
+  gm_end_tsidx: 10  # self.gm_end_tsidx > cur_tsidx ==> use gm
+
+ap_name: src.attn_processors_InDetailIP.AttnDevilProcessor2_0
+ap_block_dicts: up
+
+ap_kwargs:
+  sain: cond
+  share_start_tsidx: 0
+  inference_step: ">>> self['ddim_step']"
+  sain_start_tsidx: 0
+  sain_end_tsidx: ">>> self['ddim_step']" #t_sain_stop: -1
+  guidance_scale: ">>> self['cfg']"
+  lambda_img: 1
+  end_stratified_attention: 25

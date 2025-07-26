@@ -1,0 +1,15 @@
+models:
+  sd15:
+    pretrained_model_path: runwayml/stable-diffusion-v1-5
+    img_sz: 512
+  sd15new:
+    pretrained_model_path: stable-diffusion-v1-5/stable-diffusion-v1-5
+    img_sz: 512
+
+controlnet_model_path:
+  sd15:
+    depth: "lllyasviel/control_v11f1p_sd15_depth"
+    softedge: "lllyasviel/control_v11p_sd15_softedge"
+  sd15new:
+    depth: "lllyasviel/control_v11f1p_sd15_depth"
+    softedge: "lllyasviel/control_v11p_sd15_softedge"

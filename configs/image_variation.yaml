@@ -1,0 +1,42 @@
+## args
+root_dir: ./results
+exp_folder: "%>> %(model)s_%(task)s"
+model: sd15new
+pipe: diffusers.StableDiffusionPipeline
+ip_model: src.InDetailIP.InDetailIP
+inversion: src.ddim_inversion_sd.Inversion
+is_half: True
+
+img_path: inputs/cat.png
+inf_text:
+  - A photograph of a cat
+inv_text: A photograph of a cat
+
+#### from km
+seed: 82
+cache_dir: /home/nas2_userG/kyungminjo/.cache/tmp
+task: imgvar  #imgvar, stguide, crossprompt
+text_type: null
+use_prefix: True
+
+## cfgs
+inv_step: 50
+ddim_step: 50
+cfg: 7.5
+num_samples: 4
+#lat_smp: rnd  #shf, rnd
+use_adain: True
+#init_lat: rnd
+
+ap_name: src.attn_processors_InDetailIP.AttnDevilProcessor2_0
+ap_block_dicts: up
+
+ap_kwargs:
+  sain: cond  # all: conflicting guidance, cond: conflict-free guidance
+  share_start_tsidx: 0  # start time step for KV replacement
+  inference_step: ">>> self['ddim_step']"
+  sain_start_tsidx: 0
+  sain_end_tsidx: ">>> self['ddim_step']" #t_sain_stop: -1
+  guidance_scale: ">>> self['cfg']"
+  lambda_img: 1
+  end_stratified_attention: 10
