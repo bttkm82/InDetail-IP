@@ -37,9 +37,7 @@ As described in our paper, our model supports the following three tasks:
 2. **Structure-Guided Image Generation**
 3. **Cross-Prompt Image Generation**
 
-<p align="center">
-  <img src="assets/three_tasks.png" alt="three tasks overview" width="600"/>
-</p>
+![Three tasks](assets/three_tasks.png)
 
 ---
 
