@@ -91,6 +91,7 @@ Here are example results for each task using the default configurations:
 This implementation uses code from the following repositories:
 
 - [Official RIVAL implementation](https://github.com/dvlab-research/RIVAL)
+- [Official IP-Adapter implementation](https://github.com/tencent-ailab/IP-Adapter)
 - [Official StyleAligned implementation](https://github.com/google/style-aligned/)
 - The portion of README structure was adapted from the [Plug-and-Play](https://github.com/MichalGeyer/plug-and-play) repository.
 
