@@ -14,7 +14,7 @@ inv_text: A photograph of a cat
 
 #### from km
 seed: 82
-cache_dir: /home/nas2_userG/kyungminjo/.cache/tmp
+cache_dir: /home/nas2_userG/kyungminjo/.cache
 task: imgvar  #imgvar, stguide, crossprompt
 text_type: null
 use_prefix: True
